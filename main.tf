@@ -17,7 +17,7 @@ data "aws_ami" "app_ami" {
 module "blog_vpc" {
   name   = "dev"
   source = "terraform-aws-modules/vpc/aws"
-  
+
   cidr = "10.0.0.0/16"
 
   azs             = ["us-west-2", "su-west-2b", "us-west-2c"]
@@ -60,7 +60,6 @@ resource "aws_security_group" "blog" {
   name        = "blog"
   description = "Allow http and https in, Allow everything out"
 
-  vpc_id = data.aws_vpc.default.id
 }
 
 resource "aws_security_group_rule" "blog_http_in" {
